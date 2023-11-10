@@ -19,6 +19,14 @@ class BaseSchema {
   addValidator(validator) {
     this.validators.push(validator);
   }
+
+  updateValidator(validator, index) {
+    this.validators[index] = validator;
+  }
+
+  getValidatorIndex(name) {
+    return this.validators.findIndex((validator) => validator.name === name);
+  }
 }
 
 export default BaseSchema;

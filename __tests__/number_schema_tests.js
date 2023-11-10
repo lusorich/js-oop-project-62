@@ -14,6 +14,11 @@ describe('number schema test', () => {
     expect(schema).toBeInstanceOf(NumberSchema);
   });
 
+  test('if not required value can be empty', () => {
+    expect(schema.isValid()).toBeTruthy();
+    expect(schema.isValid(null)).toBeTruthy();
+  });
+
   test("if a required check added value can't be null or undefined or empty", () => {
     schema.required();
 

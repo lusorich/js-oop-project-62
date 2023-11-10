@@ -12,19 +12,23 @@ const numberValidator = {
 
 class NumberSchema extends BaseSchema {
   required() {
-    this.addValidator({ fn: numberValidator.required });
+    this.addValidator({ name: 'required', fn: numberValidator.required });
 
     return this;
   }
 
   positive() {
-    this.addValidator({ fn: numberValidator.positive });
+    this.addValidator({ name: 'positive', fn: numberValidator.positive });
 
     return this;
   }
 
   range(start, end) {
-    this.addValidator({ fn: numberValidator.range, args: [start, end] });
+    this.addValidator({
+      name: 'range',
+      fn: numberValidator.range,
+      args: [start, end],
+    });
 
     return this;
   }
