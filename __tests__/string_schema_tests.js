@@ -23,6 +23,11 @@ describe('string schema test', () => {
     expect(schema.isValid('null')).toBeTruthy();
   });
 
+  test('if not required value can be empty', () => {
+    expect(schema.isValid()).toBeTruthy();
+    expect(schema.isValid('')).toBeTruthy();
+  });
+
   test("if minLength added value length can't be less", () => {
     schema.minLength(3);
 
