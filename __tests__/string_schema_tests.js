@@ -14,7 +14,7 @@ describe('string schema test', () => {
     expect(schema).toBeInstanceOf(StringSchema);
   });
 
-  test("if required value can't be null or undefined or empty string", () => {
+  test("if a required check added value can't be null or undefined or empty string", () => {
     schema.required();
 
     expect(schema.isValid()).toBeFalsy();
@@ -28,7 +28,7 @@ describe('string schema test', () => {
     expect(schema.isValid('')).toBeTruthy();
   });
 
-  test("if minLength added value length can't be less", () => {
+  test("if a minLength check added value length can't be less", () => {
     schema.minLength(3);
 
     expect(schema.isValid('12')).toBeFalsy();
@@ -40,7 +40,7 @@ describe('string schema test', () => {
     expect(schema.isValid('12345')).toBeTruthy();
   });
 
-  test('if contains added value must contain a substring', () => {
+  test('if a contains check added value must contain a substring', () => {
     schema.contains('mother');
 
     expect(schema.isValid('father fffmother')).toBeFalsy();

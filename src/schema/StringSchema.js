@@ -1,6 +1,6 @@
 import BaseSchema from './BaseSchema.js';
 
-const test = {
+const stringValidator = {
   required: (value) => !!value,
   minLength: (value, minLength) => value.length >= minLength,
   contains: (value, substring) => value.split(' ').includes(substring),
@@ -8,19 +8,19 @@ const test = {
 
 class StringSchema extends BaseSchema {
   required() {
-    this.setValidator({ fn: test.required });
+    this.addValidator({ fn: stringValidator.required });
 
     return this;
   }
 
   minLength(minLength = 0) {
-    this.setValidator({ fn: test.minLength, args: minLength });
+    this.addValidator({ fn: stringValidator.minLength, args: minLength });
 
     return this;
   }
 
   contains(substring) {
-    this.setValidator({ fn: test.contains, args: substring });
+    this.addValidator({ fn: stringValidator.contains, args: substring });
 
     return this;
   }

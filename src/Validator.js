@@ -11,6 +11,12 @@ class Validator {
 
     return this.currentSchema;
   }
+
+  number() {
+    this.currentSchema = new this.schemas.Number();
+
+    return this.currentSchema;
+  }
 }
 
 export default Validator;

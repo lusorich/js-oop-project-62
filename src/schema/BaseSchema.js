@@ -16,7 +16,7 @@ class BaseSchema {
     return true;
   }
 
-  setValidator(validator) {
+  addValidator(validator) {
     this.validators.push(validator);
   }
 }
