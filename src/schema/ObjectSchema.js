@@ -7,7 +7,7 @@ class ObjectSchema extends BaseSchema {
     for (let i = 0; i < entries.length; i += 1) {
       const [key, fns] = entries[i];
 
-      super.addValidator({ name: key, fn: fns });
+      super.addSchemaValidator({ name: key, fn: fns });
     }
 
     return this;

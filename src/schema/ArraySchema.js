@@ -1,13 +1,16 @@
 import BaseSchema from './BaseSchema.js';
 
-const arrayValidator = {
+const arrayValidatorMap = {
   required: (value) => Array.isArray(value),
   sizeof: (value, size) => value.length === size,
 };
 
 class ArraySchema extends BaseSchema {
   required() {
-    this.addValidator({ name: 'required', fn: arrayValidator.required });
+    this.addSchemaValidator({
+      name: 'required',
+      fn: arrayValidatorMap.required,
+    });
 
     return this;
   }
@@ -19,15 +22,15 @@ class ArraySchema extends BaseSchema {
       super.updateValidator(
         {
           name: 'sizeof',
-          fn: arrayValidator.sizeof,
+          fn: arrayValidatorMap.sizeof,
           args: size,
         },
         validatorIndex,
       );
     } else {
-      this.addValidator({
+      this.addSchemaValidator({
         name: 'sizeof',
-        fn: arrayValidator.sizeof,
+        fn: arrayValidatorMap.sizeof,
         args: size,
       });
     }

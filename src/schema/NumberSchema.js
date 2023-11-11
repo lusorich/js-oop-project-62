@@ -1,6 +1,6 @@
 import BaseSchema from './BaseSchema.js';
 
-const numberValidator = {
+const numberValidatorMap = {
   required: (value) => typeof value === 'number' && value !== null && !!value,
   positive: (value) => Number(value) >= 0,
   range: (value, args) => {
@@ -12,21 +12,27 @@ const numberValidator = {
 
 class NumberSchema extends BaseSchema {
   required() {
-    this.addValidator({ name: 'required', fn: numberValidator.required });
+    this.addSchemaValidator({
+      name: 'required',
+      fn: numberValidatorMap.required,
+    });
 
     return this;
   }
 
   positive() {
-    this.addValidator({ name: 'positive', fn: numberValidator.positive });
+    this.addSchemaValidator({
+      name: 'positive',
+      fn: numberValidatorMap.positive,
+    });
 
     return this;
   }
 
   range(start, end) {
-    this.addValidator({
+    this.addSchemaValidator({
       name: 'range',
-      fn: numberValidator.range,
+      fn: numberValidatorMap.range,
       args: [start, end],
     });
 

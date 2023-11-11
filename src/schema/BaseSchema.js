@@ -1,6 +1,8 @@
 class BaseSchema {
-  constructor() {
+  constructor(customValidators, schemaType) {
     this.validators = [];
+    this.schemaType = schemaType;
+    this.customValidators = customValidators || [];
   }
 
   isValid(value) {
@@ -16,8 +18,12 @@ class BaseSchema {
     return true;
   }
 
-  addValidator(validator) {
+  addSchemaValidator(validator) {
     this.validators.push(validator);
+  }
+
+  getValidators() {
+    return this.validators;
   }
 
   updateValidator(validator, index) {
@@ -30,6 +36,27 @@ class BaseSchema {
 
   getValidatorByIndex(index) {
     return this.validators[index];
+  }
+
+  getCustomValidatorByNameAndType(name) {
+    return this.customValidators.find(
+      (validator) => validator.type === this.schemaType
+        && validator.name === name,
+    );
+  }
+
+  test(validatorName, value) {
+    const customValidator = this.getCustomValidatorByNameAndType(validatorName);
+
+    if (customValidator) {
+      this.addSchemaValidator({
+        name: customValidator.name,
+        fn: customValidator.fn,
+        args: value,
+      });
+    }
+
+    return this;
   }
 }
 
