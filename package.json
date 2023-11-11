@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Node.js boilerplate package",
   "bin": {
-    "validator-package": "bin/validator.js"
+    "validator-package": "./index.js"
   },
   "simple-git-hooks": {
     "pre-push": "make lint"
