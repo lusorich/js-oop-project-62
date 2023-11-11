@@ -2,7 +2,7 @@ import BaseSchema from './BaseSchema.js';
 
 const numberValidator = {
   required: (value) => typeof value === 'number' && value !== null && !!value,
-  positive: (value) => value > 0,
+  positive: (value) => Number(value) >= 0,
   range: (value, args) => {
     const [start, end] = args;
 

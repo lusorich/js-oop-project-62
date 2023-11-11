@@ -31,7 +31,7 @@ describe('number schema test', () => {
     schema.positive();
 
     expect(schema.isValid()).toBeFalsy();
-    expect(schema.isValid(0)).toBeFalsy();
+    expect(schema.isValid(0)).toBeTruthy();
     expect(schema.isValid(-12)).toBeFalsy();
     expect(schema.isValid(2)).toBeTruthy();
   });

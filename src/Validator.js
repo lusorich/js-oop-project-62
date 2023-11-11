@@ -23,6 +23,12 @@ class Validator {
 
     return this.currentSchema;
   }
+
+  object() {
+    this.currentSchema = new this.schemas.Object();
+
+    return this.currentSchema;
+  }
 }
 
 export default Validator;

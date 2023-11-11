@@ -27,6 +27,10 @@ class BaseSchema {
   getValidatorIndex(name) {
     return this.validators.findIndex((validator) => validator.name === name);
   }
+
+  getValidatorByIndex(index) {
+    return this.validators[index];
+  }
 }
 
 export default BaseSchema;
