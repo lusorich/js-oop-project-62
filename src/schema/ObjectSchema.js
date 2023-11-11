@@ -14,6 +14,10 @@ class ObjectSchema extends BaseSchema {
   }
 
   isValid(obj) {
+    if (!obj) {
+      return false;
+    }
+
     const entries = Object.entries(obj);
 
     for (let i = 0; i < entries.length; i += 1) {
