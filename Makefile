@@ -1,9 +1,6 @@
 install: install-deps
 	npx simple-git-hooks
 
-run:
-	bin/validator.js
-
 install-deps:
 	npm ci
 
@@ -18,5 +15,3 @@ lint:
 
 publish:
 	npm publish
-
-.PHONY: test
